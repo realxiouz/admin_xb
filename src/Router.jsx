@@ -1,9 +1,17 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import login from './components/login'
+import Login from './components/login'
+import List from './components/List'
+
+// import App from './containers/app'
 
 export default _ => (
   <Router>
-    <Route path='/login' component={login}/>
+    <div>
+      <Route path='/login' component={Login}/>
+      <Route path='/list' component= {List}>
+        {/* <Route path='list' component={List}/> */}
+      </Route>
+    </div>
   </Router>
 )
