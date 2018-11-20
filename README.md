@@ -13,3 +13,8 @@
 
 ### 使用react-redux
 1. 安装redux, react-redux `yarn add redux react-redux --save`
+
+### 使用axios进行网络请求(个人感觉比fetch好)
+1. 安装`yarn add axios --save`
+2. 对axios进行配置 axios.interceptors.request axios.interceptors.response
+3. dev环境配置代理: 在package.json中添加字段 "proxy": 'http://xxxx.xxx/'

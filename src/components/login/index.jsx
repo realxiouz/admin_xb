@@ -1,6 +1,6 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
-
+import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { login } from '../../common/api'
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
@@ -8,12 +8,9 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-        console.log(fetch)
-        fetch('api/pc/article/login', {
-          method: 'POST',
-          body: JSON.stringify(values)
-        }).then(res => console.log(res))
+        login(values).then( res => {
+          sessionStorage.setItem('token', res.data.token)
+        })
       }
     });
   }
@@ -23,10 +20,10 @@ class NormalLoginForm extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit} className="login-form" style={{width: '300px', margin: '100px auto'}}>
         <FormItem>
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+          {getFieldDecorator('account', {
+            rules: [{ required: true, message: 'Please input your account!' }],
           })(
-            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="account" />
           )}
         </FormItem>
         <FormItem>
