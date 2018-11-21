@@ -10,6 +10,7 @@ class NormalLoginForm extends React.Component {
       if (!err) {
         login(values).then( res => {
           sessionStorage.setItem('token', res.data.token)
+          this.props.history.push('/manage/list')
         })
       }
     });

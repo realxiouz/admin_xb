@@ -1,0 +1,19 @@
+.top-bar{
+  height: 80px;
+  background: #1890ff;
+  box-sizing: border-box;
+  padding: 15px 30px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  >span{
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    >span{
+      font-size: 16px;
+      font-weight: normal;
+
+    }
+  }
+}

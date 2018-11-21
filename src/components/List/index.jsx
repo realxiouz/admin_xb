@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table, Divider, Button, Tooltip, Popconfirm, message, Modal } from 'antd'
+import { Link } from 'react-router-dom'
 import {getList} from '../../common/api'
 
 class List extends React.Component {
@@ -72,7 +73,7 @@ class List extends React.Component {
         data: res.data.lists,
         pagination: {total: res.data.other.count, pageSize: 2, onChange: page => this.fetch(page), showQuickJumper: true}
       })
-    })
+    }).catch(e => console.log(e))
   }
 
   handleDel(e, id) {
@@ -81,14 +82,19 @@ class List extends React.Component {
   }
   render() {
     return(
-      <div>
+      <div 
+        style={{padding: '20px'}}
+      >
+        <Button
+          style={{marginBottom:'10px'}}
+          type='primary'><Link to='/manage/new'>发布快讯</Link></Button>
         <Table
-          style={{padding: '20px'}}
           bordered
           loading={this.state.loading}
           pagination={this.state.pagination}
           columns={this.columns}
-          dataSource={this.state.data}/>
+          dataSource={this.state.data}
+          rowKey={record => record.id}/>
         
         <Modal
           title="Basic Modal"
